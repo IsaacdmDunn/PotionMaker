@@ -7,17 +7,14 @@ var amount: int = 0
 var mouseEntered = false
 var payloadCreated = false
 
-#func _ready() -> void:
-	#$"../../..".items[slotID] = itemData
 
 func _process(delta: float) -> void:
-	UpdateUI()
+	if itemData!= null:
+		UpdateUI()
 	OnPayloadEnter()
 	
 	if amount == 0:
-		#print(itemData)
 		itemData = null
-		$"../../..".items[slotID] = null
 		$TextureRect.texture = null
 		$Label.text = ""
 		$TextureRect.modulate = Color.WHITE
@@ -25,8 +22,17 @@ func _process(delta: float) -> void:
 	
 func _input(event: InputEvent) -> void:
 	pass
-	
+
+
+func SetPrioritySlot(inventorySlotID):
+	slotID = inventorySlotID
+	if $"../../Inventory/GridContainer".get_child(slotID).itemData != null:
+		itemData = $"../../Inventory/GridContainer".get_child(slotID).itemData
+		amount += $"../../Inventory/GridContainer".get_child(slotID).amount
+
 func UpdateUI():
+	itemData = $"../../Inventory/GridContainer".get_child(slotID).itemData
+	amount = $"../../Inventory/GridContainer".get_child(slotID).amount
 	if itemData != null:
 		$Label.text = str(amount)
 		$TextureRect.texture = itemData.texture
@@ -44,7 +50,6 @@ func OnPayloadEnter():
 			#drop
 			if Input.is_action_just_released("Select"):
 				slotID = payload.slotID
-				var grid = $".."
 				#if item slot is not empty
 				if itemData != null:
 					#if not max stack
@@ -57,19 +62,11 @@ func OnPayloadEnter():
 				#if item slot is empty	
 				else:
 					itemData = payload.itemData
-					#grid.get_child(payload.slotID).itemData = null
 					amount += payload.amount
 					
 				payload.queue_free()
-				#$"../../..".items[slotID] = itemData
 				
-				
-func DisplayItemInfo():
-	
-	$"../../Tooltips/VBoxContainer/Description".text = itemData.discription
-	$"../../Tooltips/VBoxContainer/HBoxContainer/TextureRect".texture = itemData.texture
-	$"../../Tooltips/VBoxContainer/HBoxContainer/itemName".text = itemData.itemName
-	pass
+				UpdateUI()
 	
 
 
@@ -77,16 +74,12 @@ func _on_mouse_entered() -> void:
 	mouseEntered = true
 	if get_tree().get_nodes_in_group("InventoryPayload").size() > 0:
 		get_tree().get_first_node_in_group("InventoryPayload").isInSlot = true
-	
-	if itemData != null:
-		
-		DisplayItemInfo()
+
 	pass # Replace with function body.
 
 
 
 func _on_mouse_exited() -> void:
-	$"../../..".optionButtionOnSlotID = -1
 	if get_tree().get_nodes_in_group("InventoryPayload").size() > 0:
 		get_tree().get_first_node_in_group("InventoryPayload").isInSlot = false
 	mouseEntered = false

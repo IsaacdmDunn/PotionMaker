@@ -1,5 +1,6 @@
 extends Node
 var slotPrefab = preload("res://Prefabs/UI/Inventory/inventory_slot.tscn")
+var toolbarSlot = preload("res://Prefabs/UI/Inventory/toolbarSlot.tscn")
 @export var maxSlotCount: int
 @export var items: Array[Item]
 var application
@@ -15,11 +16,10 @@ func _ready() -> void:
 		slotToAdd.slotID = i
 		items.append(null)
 		$Inventory/GridContainer.add_child(slotToAdd)
-	#for j in 9:
-		#var slotToAdd = slotPrefab.instantiate()
-		#slotToAdd.slotID = j + maxSlotCount
-		#items.append(null)
-		#$Inventory/HBoxContainer.add_child(slotToAdd)
+	for j in 9:
+		var slotToAdd = toolbarSlot.instantiate()
+		slotToAdd.slotID = j + maxSlotCount
+		$Toolbar.add_child(slotToAdd)
 	$CauldronUI.CreateInventoryUI()
 	
 func _process(delta: float) -> void:

@@ -23,7 +23,13 @@ func _process(delta: float) -> void:
 	pass
 	
 func _input(event: InputEvent) -> void:
-	
+	if mouseEntered:
+		var just_pressed = event.is_pressed() and not event.is_echo()
+		for i in $"../../../Toolbar".get_children().size():
+			if Input.is_key_pressed(KEY_1 + i) and just_pressed:
+				$"../../../Toolbar".get_child(i).SetPrioritySlot(slotID)
+				print("priority" + str(i+1))
+		
 	if mouseEntered and !payloadCreated and Input.is_action_just_pressed("Select"):
 		CreatePayload()
 	
