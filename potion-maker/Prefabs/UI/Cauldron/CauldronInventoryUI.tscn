@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmiq4026xe1vj"]
+
+[ext_resource type="Texture2D" uid="uid://bbx3xtfff0jo1" path="res://Sprites/dockleaf.png" id="1_vlp1k"]
+[ext_resource type="Script" uid="uid://cpproicptjox" path="res://Scripts/UI/Cauldron/CauldronInventoryUI.gd" id="1_xwqdo"]
+[ext_resource type="Texture2D" uid="uid://bwpo4qfyp3502" path="res://icon.svg" id="2_gnr1f"]
+
+[node name="CauldronInventoryOptionUI2" type="Panel"]
+custom_minimum_size = Vector2(0, 172)
+size_flags_vertical = 0
+script = ExtResource("1_xwqdo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -59.0
+offset_right = 182.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_vlp1k")
+expand_mode = 1
+
+[node name="name" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "Smungus's Flower"
+clip_text = true
+
+[node name="amount" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "23"
+
+[node name="AddToCauldron" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("2_gnr1f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Health Regen"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Health Regen"
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Health Regen"
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Health Regen"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddToCauldron" to="." method="_on_add_to_cauldron_pressed"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bcqcu25y3xkk7"]
+
+[ext_resource type="Resource" uid="uid://dfqw2b6l1ho2l" path="res://Resources/Liquids/TestLiquid.tres" id="1_egyqw"]
+[ext_resource type="Script" uid="uid://bg3432bsogpp1" path="res://Scripts/Ingredient.gd" id="1_wybev"]
+
+[resource]
+script = ExtResource("1_wybev")
+liquid = ExtResource("1_egyqw")
+liquidAmount = 10.0
+metadata/_custom_type_script = "uid://bg3432bsogpp1"

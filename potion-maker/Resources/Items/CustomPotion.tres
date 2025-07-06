@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://c5ah5c0mh4bvu"]
+
+[ext_resource type="Script" uid="uid://bsco1ucnhgtjp" path="res://Scripts/Potion/Liquid.gd" id="1_fht8i"]
+[ext_resource type="Script" uid="uid://bkcn2bcd1cccw" path="res://Scripts/Inventory/Item.gd" id="1_nj4gv"]
+[ext_resource type="Script" uid="uid://ryxd6a34eesi" path="res://Scripts/Potion/PotionData.gd" id="2_che18"]
+[ext_resource type="Texture2D" uid="uid://cdiwrhpiqrpfe" path="res://Sprites/Potion.png" id="4_jt1yv"]
+
+[sub_resource type="Resource" id="Resource_hlfsm"]
+script = ExtResource("2_che18")
+liquidList = Array[ExtResource("1_fht8i")]([])
+liquidListAmount = Array[float]([])
+maxVolume = 25.0
+potionColour = Color(1, 1, 1, 1)
+metadata/_custom_type_script = "uid://ryxd6a34eesi"
+
+[resource]
+script = ExtResource("1_nj4gv")
+content = SubResource("Resource_hlfsm")
+amount = 0
+maxStack = 1
+texture = ExtResource("4_jt1yv")
+discription = "Consumable potion with an unknown substance"
+itemName = "Potion"
+consumable = true
+equipable = true
+tag = "Potion"
+metadata/_custom_type_script = "uid://bkcn2bcd1cccw"

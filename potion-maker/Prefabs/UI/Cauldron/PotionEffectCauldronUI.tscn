@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://8gg6tuecenkg"]
+
+[ext_resource type="Script" uid="uid://bghlhn5jwwbnd" path="res://Scripts/UI/Cauldron/PotionEffectCauldronUI.gd" id="1_nkruj"]
+[ext_resource type="Texture2D" uid="uid://bbx3xtfff0jo1" path="res://Sprites/dockleaf.png" id="1_pi3qh"]
+
+[node name="PotionEffectCauldronUI" type="Panel"]
+custom_minimum_size = Vector2(0, 128)
+script = ExtResource("1_nkruj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.98
+offset_left = 0.46
+offset_top = 4.4
+offset_right = 0.539978
+offset_bottom = -5.4
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EffectIcon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_pi3qh")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="name" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "Smungus's Power"
+clip_text = true
+
+[node name="amount" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "+15 Smungus/s for 15 seconds"

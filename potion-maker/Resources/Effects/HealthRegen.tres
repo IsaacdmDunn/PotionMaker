@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://c6lyrafm6mmo3"]
+
+[ext_resource type="Script" uid="uid://chdsgibdu7wdk" path="res://Scripts/Effect.gd" id="1_shw43"]
+
+[resource]
+script = ExtResource("1_shw43")
+effect = 1
+baseDuration = 0
+strength = 12.0
+effectName = "Instant Mash"
+metadata/_custom_type_script = "uid://chdsgibdu7wdk"

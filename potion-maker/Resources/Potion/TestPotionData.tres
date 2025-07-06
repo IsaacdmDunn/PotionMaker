@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PotionData" load_steps=6 format=3 uid="uid://c1pf0fri0wecc"]
+
+[ext_resource type="Script" uid="uid://bsco1ucnhgtjp" path="res://Scripts/Potion/Liquid.gd" id="1_2ls2d"]
+[ext_resource type="Resource" uid="uid://dfqw2b6l1ho2l" path="res://Resources/Liquids/TestLiquid.tres" id="2_amlh0"]
+[ext_resource type="Script" uid="uid://ryxd6a34eesi" path="res://Scripts/Potion/PotionData.gd" id="2_x05qu"]
+[ext_resource type="Resource" uid="uid://dry60nxw0ka12" path="res://Resources/Liquids/potion2.tres" id="3_xc53r"]
+[ext_resource type="Resource" uid="uid://bwt0ptsfwbnj4" path="res://Resources/Liquids/potion 3.tres" id="4_htt8e"]
+
+[resource]
+script = ExtResource("2_x05qu")
+liquidList = Array[ExtResource("1_2ls2d")]([ExtResource("2_amlh0"), ExtResource("3_xc53r"), ExtResource("4_htt8e")])
+liquidListAmount = Array[float]([25.0, 25.0, 25.0])
+maxVolume = 25.0
+potionColour = Color(1, 1, 1, 1)
+metadata/_custom_type_script = "uid://ryxd6a34eesi"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://diprfotky04cr"]
+
+[ext_resource type="Script" uid="uid://dp5gpwqh42c5m" path="res://Scripts/StatList.gd" id="1_se3ls"]
+
+[resource]
+script = ExtResource("1_se3ls")
+health = 100.0
+stamina = 100.0
+mana = 100.0
+healthRegen = 0.001
+staminaRegen = 0.001
+manaRegen = 0.001
+metadata/_custom_type_script = "uid://dp5gpwqh42c5m"

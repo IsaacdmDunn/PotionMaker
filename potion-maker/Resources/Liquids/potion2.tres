@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Liquid" load_steps=2 format=3 uid="uid://dry60nxw0ka12"]
+
+[ext_resource type="Script" uid="uid://bsco1ucnhgtjp" path="res://Scripts/Potion/Liquid.gd" id="1_lt0mj"]
+
+[resource]
+script = ExtResource("1_lt0mj")
+id = 2
+colour = Color(0.52549, 0.705882, 0.207843, 0.584314)
+metadata/_custom_type_script = "uid://bsco1ucnhgtjp"

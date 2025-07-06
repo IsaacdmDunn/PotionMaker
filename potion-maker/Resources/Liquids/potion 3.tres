@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Liquid" load_steps=3 format=3 uid="uid://bwt0ptsfwbnj4"]
+
+[ext_resource type="Resource" uid="uid://c6lyrafm6mmo3" path="res://Resources/Effects/HealthRegen.tres" id="1_pufe3"]
+[ext_resource type="Script" uid="uid://bsco1ucnhgtjp" path="res://Scripts/Potion/Liquid.gd" id="1_xt7sh"]
+
+[resource]
+script = ExtResource("1_xt7sh")
+id = 3
+colour = Color(0.298039, 0.443137, 0.788235, 0.835294)
+effect = ExtResource("1_pufe3")
+metadata/_custom_type_script = "uid://bsco1ucnhgtjp"

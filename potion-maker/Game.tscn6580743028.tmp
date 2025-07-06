@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://btrwgfs45jpff"]
+
+[ext_resource type="Script" uid="uid://fdthkie814r" path="res://Scripts/Cauldron.gd" id="1_wbfu4"]
+[ext_resource type="Resource" uid="uid://c1pf0fri0wecc" path="res://Resources/Potion/TestPotionData.tres" id="2_xkndl"]
+[ext_resource type="Script" uid="uid://ca81yhychhvx6" path="res://Scripts/ladel.gd" id="3_u44n3"]
+
+[sub_resource type="Gradient" id="Gradient_xkndl"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u44n3"]
+gradient = SubResource("Gradient_xkndl")
+fill_from = Vector2(0.977064, 1)
+fill_to = Vector2(0.977064, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sb48q"]
+size = Vector3(0.3, 2.07, 0.3)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Cauldron" type="Node3D" parent="."]
+script = ExtResource("1_wbfu4")
+potionData = ExtResource("2_xkndl")
+
+[node name="Sprite3D" type="Sprite3D" parent="Cauldron"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, -0.060351, 0)
+texture = SubResource("GradientTexture2D_u44n3")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Cauldron"]
+transform = Transform3D(1, 0, 0, 0, 3.515, 0, 0, 0, 1, 0, -0.5, 0)
+inner_radius = 0.651
+
+[node name="Ladel" type="Node3D" parent="Cauldron"]
+script = ExtResource("3_u44n3")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Cauldron/Ladel"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0.30828)
+radius = 0.0878906
+
+[node name="Area3D" type="Area3D" parent="Cauldron/Ladel/CSGCylinder3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cauldron/Ladel/CSGCylinder3D/Area3D"]
+shape = SubResource("BoxShape3D_sb48q")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.940098, 0.340905, 0, -0.340905, 0.940098, 0, 1.45554, 3.00621)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.760122, 0.64978, 0, -0.64978, 0.760122, 0, 3.96504, 5.6758)
+spot_range = 10.775
+
+[connection signal="mouse_entered" from="Cauldron/Ladel/CSGCylinder3D/Area3D" to="Cauldron/Ladel" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Cauldron/Ladel/CSGCylinder3D/Area3D" to="Cauldron/Ladel" method="_on_area_3d_mouse_exited"]

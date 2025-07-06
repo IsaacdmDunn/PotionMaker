@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PotionMixer" load_steps=7 format=3 uid="uid://buygyr0tl3evi"]
+
+[ext_resource type="Script" uid="uid://bsco1ucnhgtjp" path="res://Scripts/Potion/Liquid.gd" id="1_x5jcs"]
+[ext_resource type="Script" uid="uid://dnlglf7o0p1g1" path="res://Scripts/Potion/PotionMixer.gd" id="2_1h5tu"]
+[ext_resource type="Resource" uid="uid://dfqw2b6l1ho2l" path="res://Resources/Liquids/TestLiquid.tres" id="2_8ppvu"]
+[ext_resource type="Resource" uid="uid://dry60nxw0ka12" path="res://Resources/Liquids/potion2.tres" id="3_6jmr4"]
+[ext_resource type="Resource" uid="uid://bwt0ptsfwbnj4" path="res://Resources/Liquids/potion 3.tres" id="4_fxmch"]
+[ext_resource type="Resource" uid="uid://bnjq4k1e51pfx" path="res://Resources/Liquids/potion4.tres" id="5_fxmch"]
+
+[resource]
+script = ExtResource("2_1h5tu")
+PotionMix = ExtResource("5_fxmch")
+LiquidRequirements = Array[ExtResource("1_x5jcs")]([ExtResource("2_8ppvu"), ExtResource("3_6jmr4"), ExtResource("4_fxmch")])
+LiquidRatio = Array[float]([0.2, 0.3, 0.5])
+tempRequirements = -500.0
+stirring = 1
+mixAge = -1.0
+tempRange = 10
+metadata/_custom_type_script = "uid://dnlglf7o0p1g1"

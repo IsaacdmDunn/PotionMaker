@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Liquid" load_steps=3 format=3 uid="uid://bnjq4k1e51pfx"]
+
+[ext_resource type="Resource" uid="uid://bow0kn5fy1b7s" path="res://Resources/Effects/TestEffect.tres" id="1_o2vci"]
+[ext_resource type="Script" uid="uid://bsco1ucnhgtjp" path="res://Scripts/Potion/Liquid.gd" id="1_s48t3"]
+
+[resource]
+script = ExtResource("1_s48t3")
+id = 4
+colour = Color(0.662745, 0, 0.807843, 0.905882)
+effect = ExtResource("1_o2vci")
+metadata/_custom_type_script = "uid://bsco1ucnhgtjp"

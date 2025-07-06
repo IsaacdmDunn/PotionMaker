@@ -1,0 +1,227 @@
+[gd_scene load_steps=18 format=3 uid="uid://btrwgfs45jpff"]
+
+[ext_resource type="Script" uid="uid://fdthkie814r" path="res://Scripts/Cauldron.gd" id="1_wbfu4"]
+[ext_resource type="Resource" uid="uid://c1pf0fri0wecc" path="res://Resources/Potion/TestPotionData.tres" id="2_xkndl"]
+[ext_resource type="Resource" uid="uid://bcqcu25y3xkk7" path="res://Resources/Ingredients/testIngredient.tres" id="3_sb48q"]
+[ext_resource type="Script" uid="uid://ca81yhychhvx6" path="res://Scripts/Ladel.gd" id="3_u44n3"]
+[ext_resource type="Texture2D" uid="uid://bwpo4qfyp3502" path="res://icon.svg" id="4_yhmtn"]
+[ext_resource type="Script" uid="uid://dgjwk8fucweuv" path="res://Scripts/PickUp.gd" id="5_r0x5m"]
+[ext_resource type="Texture2D" uid="uid://bbx3xtfff0jo1" path="res://Sprites/dockleaf.png" id="6_3mrqo"]
+[ext_resource type="Script" uid="uid://fvniladmgt41" path="res://Scripts/Player/PlayerMovement.gd" id="7_2vekm"]
+[ext_resource type="Script" uid="uid://da4kgix4wpn4t" path="res://Scripts/CharacterStats.gd" id="7_3mrqo"]
+[ext_resource type="Script" uid="uid://rjyit7t8rr6d" path="res://Scripts/Inventory/Inventory.gd" id="7_joorw"]
+
+[sub_resource type="Gradient" id="Gradient_xkndl"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u44n3"]
+gradient = SubResource("Gradient_xkndl")
+fill_from = Vector2(0.977064, 1)
+fill_to = Vector2(0.977064, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sb48q"]
+size = Vector3(0.3, 2.07, 0.3)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2vekm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yx171"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vekm"]
+albedo_color = Color(0.32549, 0.698039, 0.176471, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2vekm"]
+size = Vector3(1000, 0.1, 1000)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("7_joorw")
+slotPrefab = null
+maxSlotCount = 24
+items = null
+
+[node name="Inventory" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16
+anchor_top = 0.16
+anchor_right = 0.84
+anchor_bottom = 0.84
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Inventory"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16
+anchor_right = 0.84
+anchor_bottom = 0.1
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 52
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Control/Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 8
+
+[node name="Tooltips" type="Panel" parent="Control/Inventory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.1
+anchor_right = 0.92
+anchor_bottom = 0.92
+offset_left = -43.92
+offset_top = -0.439995
+offset_right = -0.151978
+offset_bottom = -0.647949
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Inventory/Tooltips"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "Info"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Inventory/Tooltips"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Inventory/Tooltips/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Inventory/Tooltips/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("4_yhmtn")
+expand_mode = 1
+
+[node name="itemName" type="Label" parent="Control/Inventory/Tooltips/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Item Name"
+
+[node name="Description" type="RichTextLabel" parent="Control/Inventory/Tooltips/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Cauldron" type="Node3D" parent="."]
+script = ExtResource("1_wbfu4")
+potionData = ExtResource("2_xkndl")
+ingredientToAdd = ExtResource("3_sb48q")
+
+[node name="Sprite3D" type="Sprite3D" parent="Cauldron"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, -0.060351, 0)
+texture = SubResource("GradientTexture2D_u44n3")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Cauldron"]
+transform = Transform3D(1, 0, 0, 0, 3.515, 0, 0, 0, 1, 0, -0.5, 0)
+inner_radius = 0.651
+
+[node name="Ladel" type="Node3D" parent="Cauldron"]
+script = ExtResource("3_u44n3")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Cauldron/Ladel"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0.30828)
+radius = 0.0878906
+
+[node name="Area3D" type="Area3D" parent="Cauldron/Ladel/CSGCylinder3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cauldron/Ladel/CSGCylinder3D/Area3D"]
+shape = SubResource("BoxShape3D_sb48q")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.760122, 0.64978, 0, -0.64978, 0.760122, 0, 3.96504, 5.6758)
+spot_range = 10.775
+
+[node name="TestIngredient" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.17507, 0, 0)
+script = ExtResource("5_r0x5m")
+pickupItem = ExtResource("3_sb48q")
+
+[node name="Sprite3D" type="Sprite3D" parent="TestIngredient"]
+texture = ExtResource("6_3mrqo")
+
+[node name="Sprite3D2" type="Sprite3D" parent="TestIngredient"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0728865, 0, 0)
+texture = ExtResource("6_3mrqo")
+
+[node name="Area3D" type="Area3D" parent="TestIngredient"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestIngredient/Area3D"]
+shape = SubResource("CapsuleShape3D_2vekm")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373909, 1.89272, 6.09155)
+script = ExtResource("7_2vekm")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Player"]
+visible = false
+
+[node name="stats" type="Node3D" parent="Player"]
+script = ExtResource("7_3mrqo")
+
+[node name="Area3D" type="Area3D" parent="Player"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D"]
+shape = SubResource("BoxShape3D_yx171")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("BoxShape3D_yx171")
+
+[node name="Head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14063, -0.347264)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.438345, -0.557001)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.67986, 0)
+material_override = SubResource("StandardMaterial3D_2vekm")
+size = Vector3(1000, 0.1, 1000)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/CSGBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGBox3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_2vekm")
+
+[connection signal="mouse_entered" from="Cauldron/Ladel/CSGCylinder3D/Area3D" to="Cauldron/Ladel" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Cauldron/Ladel/CSGCylinder3D/Area3D" to="Cauldron/Ladel" method="_on_area_3d_mouse_exited"]
+[connection signal="mouse_entered" from="TestIngredient/Area3D" to="TestIngredient" method="_on_area_3d_mouse_entered"]
