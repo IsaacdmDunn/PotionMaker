@@ -78,10 +78,10 @@ func OnPayloadEnter():
 				
 				
 func DisplayItemInfo():
-	
-	$"../../Tooltips/VBoxContainer/Description".text = itemData.discription
-	$"../../Tooltips/VBoxContainer/HBoxContainer/TextureRect".texture = itemData.texture
-	$"../../Tooltips/VBoxContainer/HBoxContainer/itemName".text = itemData.itemName
+	if itemData != null:
+		$"../../Tooltips/VBoxContainer/Description".text = itemData.discription
+		$"../../Tooltips/VBoxContainer/HBoxContainer/TextureRect".texture = itemData.texture
+		$"../../Tooltips/VBoxContainer/HBoxContainer/itemName".text = itemData.itemName
 	pass
 	
 func CreatePayload():

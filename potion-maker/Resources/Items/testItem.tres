@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_ojfgp")
 content = ExtResource("1_ojfgp")
-amount = 1
+amount = 3
 maxStack = 32
 texture = ExtResource("3_hfws5")
 discription = "Large green leafed perrenial plant with healing and anti-sting properties"

@@ -25,7 +25,7 @@ func Pickup():
 		pass
 	#item added
 	elif inventoryStatus == 1:
-		#queue_free()
+		queue_free()
 		pass
 
 

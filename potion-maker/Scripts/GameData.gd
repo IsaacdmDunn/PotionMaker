@@ -7,6 +7,7 @@ enum UIState{None, Inventory, Cauldron}
 var currentUIState: UIState = UIState.None
 var UIStateChanged = false
 var inventoryUI: Control
+var cauldronUI:Panel
 func _init() -> void:
 	
 	LoadAllFromFile("res://Resources/Mixers/", potionMixers)
@@ -18,18 +19,28 @@ func _input(event: InputEvent) -> void:
 			currentUIState = UIState.Inventory
 		else:
 			currentUIState = UIState.None
+	elif Input.is_action_just_pressed("Activate") and get_tree().get_first_node_in_group("PlayerInventory").application != null:
+		UIStateChanged = true
+		if currentUIState != UIState.Cauldron:
+			currentUIState = UIState.Cauldron
+		else:
+			currentUIState = UIState.None
 			
 func _ready() -> void:
 	inventoryUI = get_tree().get_first_node_in_group("InventoryUI")
-	
+	cauldronUI = get_tree().get_first_node_in_group("CauldronUI")
 func _process(delta: float) -> void:
 	if UIStateChanged:
 		UIStateChanged = false
 		if currentUIState == UIState.None:
 			inventoryUI.position.y = -2000
+			cauldronUI.position.y = -2000
 		elif currentUIState == UIState.Inventory:
 			inventoryUI.position.y = 173
-			
+			cauldronUI.position.y = -2000
+		elif currentUIState == UIState.Cauldron:
+			inventoryUI.position.y = -2000
+			cauldronUI.position.y = 162
 #loads all resources from folder
 func LoadAllFromFile(path, array):
 	var dir = DirAccess.open(path)

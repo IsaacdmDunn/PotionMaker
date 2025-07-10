@@ -7,7 +7,8 @@ var cauldron
 var potionTooltips : Array[String]
 
 var potionTooltipUpdate = false
-#func _ready() -> void:
+func _init() -> void:
+	add_to_group("CauldronUI")
 	#CauldronUI()
 	#CreateInventoryUI()
 

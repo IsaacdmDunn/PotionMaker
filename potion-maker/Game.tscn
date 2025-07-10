@@ -167,13 +167,14 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="CauldronUI" type="Panel" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.15
 anchor_top = 0.15
 anchor_right = 0.85
 anchor_bottom = 0.85
+offset_top = -2162.0
+offset_bottom = -2162.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_yyih5")
@@ -397,22 +398,24 @@ shape = SubResource("BoxShape3D_sb48q")
 transform = Transform3D(1, 0, 0, 0, 0.760122, 0.64978, 0, -0.64978, 0.760122, 0, 3.96504, 5.6758)
 spot_range = 10.775
 
-[node name="TestIngredient" type="Node3D" parent="."]
+[node name="Dockleaf" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.17507, 0, 0)
 script = ExtResource("5_r0x5m")
 pickupItem = ExtResource("8_yhmtn")
 
-[node name="Sprite3D" type="Sprite3D" parent="TestIngredient"]
+[node name="Sprite3D" type="Sprite3D" parent="Dockleaf"]
 texture = ExtResource("6_3mrqo")
 
-[node name="Sprite3D2" type="Sprite3D" parent="TestIngredient"]
+[node name="Sprite3D2" type="Sprite3D" parent="Dockleaf"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0728865, 0, 0)
 texture = ExtResource("6_3mrqo")
 
-[node name="Area3D" type="Area3D" parent="TestIngredient"]
+[node name="Area3D" type="Area3D" parent="Dockleaf"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestIngredient/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dockleaf/Area3D"]
 shape = SubResource("CapsuleShape3D_2vekm")
+
+[node name="PlantData" type="Node" parent="Dockleaf"]
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373909, 1.89272, 6.09155)
@@ -457,5 +460,5 @@ shape = SubResource("BoxShape3D_2vekm")
 [connection signal="button_down" from="Control/CauldronUI/VBoxContainer/HBoxContainer/PotionDataUI/VBoxContainer/ActionButtons/MakePotion" to="Control/CauldronUI" method="_on_make_potion_button_down"]
 [connection signal="mouse_entered" from="Cauldron/Ladel/CSGCylinder3D/Area3D" to="Cauldron/Ladel" method="_on_area_3d_mouse_entered"]
 [connection signal="mouse_exited" from="Cauldron/Ladel/CSGCylinder3D/Area3D" to="Cauldron/Ladel" method="_on_area_3d_mouse_exited"]
-[connection signal="mouse_entered" from="TestIngredient/Area3D" to="TestIngredient" method="_on_area_3d_mouse_entered"]
-[connection signal="mouse_exited" from="TestIngredient/Area3D" to="TestIngredient" method="_on_area_3d_mouse_exited"]
+[connection signal="mouse_entered" from="Dockleaf/Area3D" to="Dockleaf" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Dockleaf/Area3D" to="Dockleaf" method="_on_area_3d_mouse_exited"]
