@@ -67,7 +67,7 @@ func DropItem(slotID: int, amount: int):
 
 func AddToCauldron(slotID: int, amount: int):
 	if $Inventory/GridContainer.get_child(slotID).itemData.tag == "Ingredient":
-		application.AddLiquid($Inventory/GridContainer.get_child(slotID).itemData.content.liquid, $Inventory/GridContainer.get_child(slotID).itemData.content.liquidAmount * amount)
+		application.AddIngredient($Inventory/GridContainer.get_child(slotID).itemData.content, $Inventory/GridContainer.get_child(slotID).amount)
 	pass
 
 func _on_inventory_mouse_entered() -> void:

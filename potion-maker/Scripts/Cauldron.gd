@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("MakePotion"):
 		MakePotion()
 	if Input.is_action_just_pressed("AddTestIngredient"):
-		AddIngredient(ingredientToAdd)
+		AddIngredient(ingredientToAdd,1)
 	
 func SetPotionColour():
 	var potionSize = 0
@@ -106,8 +106,10 @@ func AddLiquid(liquid:Liquid, amount: float):
 	potionData.liquidList.append(liquid)
 	potionData.liquidListAmount.append(amount)
 	
-func AddIngredient(ingredient: Ingredient):
+func AddIngredient(ingredient: Ingredient, itemCount: int):
 	if potionData.liquidList.has(ingredient.liquid):
-		potionData.liquidListAmount[potionData.liquidList.find(ingredient.liquid)] += ingredient.liquidAmount
+		print("guh")
+		potionData.liquidListAmount[potionData.liquidList.find(ingredient.liquid)] += ingredient.liquidAmount * itemCount
 	else:
+		print("huh")
 		AddLiquid(ingredient.liquid, ingredient.liquidAmount)
